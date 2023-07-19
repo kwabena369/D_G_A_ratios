@@ -1,0 +1,56 @@
+  
+   <div class="wrapper_files_at_thedb
+    mt-3
+    bg-pink-300  w-fit
+     p-10 flex-col flex 
+      m-auto 
+     rounded-lg">
+<% if ( typeof already_uploaded_file !== null && typeof already_uploaded_file !== 'undefined') { %>
+     <% already_uploaded_file.forEach(element => { %>
+       <div class="one_single_instance
+        flex flex-row 
+         text-white
+         rounded-lg m-auto
+        justify-between items-center space-y-1 ">
+           
+           <a href="/Dis_Cal/single_excel/?file_id=<%=element.id%>" 
+               class="bg-blue-400 p-2 rounded-lg">
+           <span class="one_instance_file">
+        <%= element.file_name %>
+     
+            </span>
+          </a>
+           
+           <span id="<%=element.id%>" class="delete_btn
+               ml-3  cursor-pointer bg-blue-500 rounded-lg p-3 ">
+               Delete
+           </span>
+     </div>
+     <% }) %>
+<% }else{%>
+ 
+     <div class="error">
+         did not work here 
+     </div>
+     <% }%>
+</div>
+ 
+ <!--  for the handling of the deleting  --> 
+  <script>
+      let delete_btn = document.querySelector(".delete_btn");
+      delete_btn.addEventListener("click",(event)=>{
+          //  for the id 
+           let id_thing  =  event.target.id;
+            fetch(`/Dis_Cal/Delete_file/${id_thing}`).then(
+                res =>{
+                     res.json().then(
+                          done=>{
+                               if(done.result){
+                                    console.log("this is done in the back")
+                               }
+                          }
+                     )
+                }
+            )
+      })
+  </script>

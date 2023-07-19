@@ -1,0 +1,279 @@
+ <!--  in here there is going to be the 
+    ---upload btn 
+ - --- and that all -->
+   <div class="main_body_wrapper
+    h-full w-screen flex flex-col space-y-10 ">
+     <!-- here is for the other -->
+      <%- include('./partial_snippets/All_Uploaded_Excel.ejs') %>
+       
+      <span class="text-2xl font-sans bg-pink-300 rounded-lg 
+      p-3 text-center w-fit m-auto ">
+         Single Instance
+      </span>
+      <!--  here is the single_instance zone -->
+       <div class="wrapper_single_instance_fault"> 
+          <!-- for the single instance -->
+        
+           <div class="main_thing flex 
+           flex-row 
+           space-x-2
+            items-center 
+            mb-4
+           justify-center"> 
+             
+            
+              <!-- H2 -->
+              <div class="input_section_of_can 
+              flex
+              flex-col">
+         <!-- for different chemical there  -->
+              <span 
+               class="bg-gray-800 w-fit p-2 rounded-lg text-white"
+              >H2</span>
+               <div contenteditable class="real_input_place_H2 
+               rounded-lg border-2 border-solid
+               border-yellow-300 p-3 
+               bg-gray-100"></div>
+             </div>
+
+              <!-- CH4 -->
+             <div class="input_section_of_can flex
+             flex-col">
+               <!-- for different chemical there  -->
+                    <span
+                    class="bg-gray-800 w-fit p-2 rounded-lg text-white" 
+                    >CH4</span>
+                     <div contenteditable class="real_input_place_CH4
+                     rounded-lg border-2 border-solid
+                     border-yellow-300 p-3 
+                     bg-gray-100"> 
+                     </div>
+                   </div>
+
+                   <!--C2H2  -->
+
+                   <div class="input_section_of_can
+                   flex
+                   flex-col
+                   space-y-1">
+                     <!-- for different chemical there  -->
+                          <span
+                          class="bg-gray-800 w-fit p-2 rounded-lg text-white"
+                          >C2H2</span>
+                           <div contenteditable class="real_input_place_C2H2
+                           rounded-lg border-2 border-solid
+                           border-yellow-300 p-3 
+                           bg-gray-100"> 
+                           </div>
+                         </div>
+                          
+
+                           <!-- C2H6 -->
+                         <div class="input_section_of_can
+                         flex
+                         flex-col
+                         space-y-1">
+                           <!-- for different chemical there  -->
+                                <span
+                                class="bg-gray-800 w-fit p-2 rounded-lg text-white"
+                                >C2H6</span>
+                                 <div contenteditable
+                                  class="real_input_place_C2H6
+                                 rounded-lg border-2 border-solid
+                                 border-yellow-300 p-3 
+                                 bg-gray-100"> 
+                                 </div>
+                               </div>
+
+                         <!-- C2H4 -->
+
+                         <div class="input_section_of_can 
+                           flex
+                            flex-col
+                            space-y-1
+                           ">
+                           <!-- for different chemical there  -->
+                                <span
+                                class="bg-gray-800 w-fit p-2 rounded-lg text-white"
+                                >C2H4</span>
+                                 <div contenteditable 
+                                 class="real_input_place_C2H4
+                                   rounded-lg border-2 border-solid
+                                    border-yellow-300 p-3 
+                                    bg-gray-100"> 
+                                 </div>
+                               </div>
+
+                           
+           </div>
+<!-- here are the various btn which we can apply to them  -->
+ 
+ <div class="single_instance_result">
+   
+ </div>
+ 
+ <div class="single_instance flex
+   flex-row 
+  border-solid
+ rounded-lg  border-3
+  mt-3
+   border-pink-400   
+   w-fit bg-pink-300 p-3
+    m-auto
+  
+   items-center
+    justify-items-center space-x-3 
+  ">
+  <!--  for the various btn 
+ -->
+  <span class="action_btn
+   bg-blue-400 p-3 rounded-lg text-2xl cursor-pointer text-center">D</span>
+<!--  for the other -->
+  <span class="action_btn
+  bg-blue-400 p-3 rounded-lg text-2xl text-center">
+    Roger_staff 
+ </span> 
+ <span class="action_btn
+ bg-blue-400 p-3 rounded-lg text-2xl text-center">IEC</span>
+  
+ </div>
+ 
+       </div>
+ </div>
+
+
+
+ <!-- here is the pdf -->
+   <%- include('Page/converting_pdf.ejs') %>
+  <script> 
+
+
+
+//   getting of all the action btn 
+     let action_btn  = document.querySelectorAll(".action_btn");
+     
+   
+      action_btn.forEach(element =>{
+          //  attaching of the  event listner to the 
+           element.addEventListener("click",(event)=>{
+
+            //  getting all the value of the  thing in the inputed space
+    let real_input_place_H2 = document.querySelector(".real_input_place_H2")
+    let real_input_place_CH4 = document.querySelector(".real_input_place_CH4")
+    let real_input_place_C2H2 = document.querySelector(".real_input_place_C2H2")
+    let real_input_place_C2H6 = document.querySelector(".real_input_place_C2H6")
+    let real_input_place_C2H4 = document.querySelector(".real_input_place_C2H4")
+
+
+    let _mega_colaso_container = {
+          H2 :  real_input_place_H2.innerText.replace(/\s/g,""),
+          CH4 :  real_input_place_CH4.innerText.replace(/\s/g,""),
+          C2H2 :  real_input_place_C2H2.innerText.replace(/\s/g,""),
+          C2H6 :  real_input_place_C2H6.innerText.replace(/\s/g,""),
+          C2H4 :  real_input_place_C2H4.innerText.replace(/\s/g,""),
+      } 
+              if(event.target.innerText === "D"||
+                 event.target.innerText === "IEC"){
+                //   do the fetching for the doen calculation 
+                fetch
+    (`/Dis_Cal/for_which_one/${event.target.innerText}`,{
+       method  :"POST",
+       headers  : {'Content-Type':"application/json"},
+        body : JSON.stringify({
+          staff_need : _mega_colaso_container})
+    }).then(
+       res =>{
+         res.json().then(
+            done=>{
+              console.log(done.result);
+               if(done.result){
+                //  then disable the hidden thing
+                  document.querySelector(".single_instance_result").innerHTML
+                   = `<div   class="
+               cursor-pointer 
+                mb-3 bg-fuchsia-400 w-fit 
+                 p-3 rounded-lg m-auto ">
+               <span class=" flex flex-col space-y-1
+               wrapper_all2 ">
+                   
+                 ${done.result.according_to_den} <br>
+                     <br>
+                     <small class="bg-green-400 p-3 rounded-md">
+                        ${ done.result.according_to_den}
+                     </small>
+                     
+               </span>
+                     
+             </div>
+             
+              <div  class=" hidden raw_value_ration 
+                bg-indigo-400 p-5 rounded-lg  h-fit
+                 items-center w-fit text-white z-40
+                  fixed top-1/2 left-1/2 transform -translate-x-1/2
+                -translate-y-1/2">
+                
+                 
+                <span  
+                 class=" bg-blue-300 border-2 border-solid
+                 p-2
+                  border-orange-200" 
+                > 
+                    <small>
+                      CH4/H2
+                    </small> <br>
+                     <small>
+                        ${ done.result.instance_CH4_H2 }
+                     </small>
+                 </span>
+
+                 <span 
+                 
+                 class=" bg-blue-300 border-2 border-solid
+                 p-2
+                  border-orange-200" > 
+                  <small>
+                    C2H2/CH4
+                  </small> <br>
+                   <small>
+                      ${ done.result.instance_C2H2_CH4 }
+                   </small>
+               </span>
+
+               <span
+               class=" bg-blue-300 border-2 border-solid
+                 p-2
+                  border-orange-200" 
+               > 
+                  <small>
+                    C2H2/C2H4
+                  </small> <br>
+                   <small>
+                    $ {done.result.instance_C2H2_C2H4 }
+                   </small>
+               </span>
+
+
+               <span
+               class=" bg-blue-300 border-2 border-solid
+               p-2
+                border-orange-200" 
+               > 
+                  <small>
+                    C2H6/C2H2
+                  </small> <br>
+                   <small>
+                     ${ done.result.instance_C2H6_C2H2 }
+                   </small>
+               </span>
+                 
+                 </div>`
+                 
+               }
+            }
+         )
+       }
+    )
+              }
+           })
+      })     
+  </script>

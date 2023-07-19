@@ -1,0 +1,44 @@
+<!--  here we display the html of the pdf -->
+<div class="golden_html" >
+     
+</div>
+ 
+ <script>
+     let place_to_display = document.querySelector(".golden_html");
+ let golden_pdf = "golden_pdf.pdf";
+//  here we are going to be doing to getting of the fitst pages
+//   here the name of the thng is the pdfjsLib and then we are going to be 
+// makijg it a pormixse 
+ 
+pdfjsLib.getDocument(golden_pdf)
+ .promise.then(
+     thing =>{
+    //    here we are going  to be loadinf the futst page there 
+return thing.getPage(1)})
+.then(
+        // since that one too is promise we are going to be 
+        //   creating the canve 
+         real_deal =>
+{         let canvas = document.createElement("canvas") 
+   place_to_display.appendChild(canvas)
+    console.log(real_deal)
+//  here we are going to be seting the scale
+ let scale = 2; 
+//   then here is the viewpoint of the thing 
+  
+ let viewpoint =  real_deal.getViewport({scale}); 
+//    here is the setting of the height and the width the the one of the page
+//  view point there
+  canvas.width  = viewpoint.width;
+   canvas.height = viewpoint.height;
+    // there we are getting the context 
+    //  and the attaching of all the thing to the pae there 
+     let context = canvas.getContext("2d");
+    //   the final attaching of the thing there
+ real_deal.render({canvasContext : context,viewpoint})
+}).catch(err =>{
+     console.log("the pdf was not there ")
+     console.log(err)
+})
+ 
+ </script>

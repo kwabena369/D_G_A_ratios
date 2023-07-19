@@ -1,0 +1,328 @@
+<div class="wrapper_single_instance 
+p-4
+ text-center ml-5 grid" style="grid-template: 3fr  auto;
+  column-gap: 20px;">
+     
+ <!--  here it is going to be divided into
+ the section of  -->
+     <div 
+     class="tools flex flex-col
+       items-center
+       m-10
+       ml-6
+        transform 
+         p-5  rounded-lg
+         -translate-x-1/2
+          -translate-y-1/2
+        fixed
+         top-1/2
+      bg-pink-300 space-y-3">
+ 
+       <!--  here is a notice -->
+  <span class="w-fit bg-black p-4 m-auto  rounded-lg text-white text-2xl">Apply  Ratio</span>
+        
+         <!--  here the user can choose which
+         one is suppose to be actting on the thing -->
+         <span
+          class="current_tool
+           bg-white rounded-md p-1 cursor-pointer"
+          >Doenngurd</span>
+         <span class="current_tool
+         bg-pink-500 rounded-md p-1 cursor-pointer">Roger Ratio</span>
+         <span class="current_tool
+         bg-green-500 rounded-md p-1 cursor-pointer">IEC_IEEE</span>
+     </div> 
+      
+      <div class="relative col-span-5" style="grid-column-start: 2;">
+     <!-- this one is for the doenberg -->
+      <div class="the_broad_view  col-span-1 border-2 border-solid
+        do_en
+        w-auto
+        flex
+        p-4
+        absolute top-0
+        rounded-lg
+        m-14
+        flex-wrap h-auto
+       border-indigo-200" >
+ 
+        
+        
+        
+        
+
+       <% if (typeof one_now_doenberg !== null&&typeof one_now_doenberg !== 'undefined') { %>
+         <!--  then we are going to be outputing them one after the other -->
+         <span class="heder_for_them text-3xl text-pink-400 font-sans  ">
+           doenberg
+          </span>
+         <% one_now_doenberg.forEach((element,index) => { %>
+             <div   class="
+               cursor-pointer 
+                mb-3 bg-fuchsia-400 w-fit 
+                 p-3 rounded-lg m-auto ">
+               <span class=" flex flex-col space-y-1
+               wrapper_all2 "id="main_<%=index%>"> 
+                   
+                <span> Row <%= index+1 %></span>
+                 <%= element.faul_type%> <br>
+                   <% if (element.according_to_den.length !== 0) { %>
+                     <br>
+                     <small class="bg-green-400 p-3 rounded-md">
+                        <%= element.according_to_den %>
+                     </small>
+                      <br>
+                   <% }else{ %>
+                    <small class="bg-red-400 p-3 rounded-md">
+                        <%="Not good" %> 
+                    </small>
+                    <% } %>
+               </span>
+                     
+             </div>
+              <!-- here is when we do want to dispaly the inner 
+             value of the ratios and other 
+              -->
+              <div id="<%=index%>" class=" hidden raw_value_ration 
+                bg-indigo-400 p-5 rounded-lg  h-fit
+                 items-center w-fit text-white z-40
+                  fixed top-1/2 left-1/2 transform -translate-x-1/2
+                -translate-y-1/2">
+                
+                 
+                <span  
+                 class=" bg-blue-300 border-2 border-solid
+                 p-2
+                  border-orange-200" 
+                > 
+                    <small>
+                      CH4/H2
+                    </small> <br>
+                     <small>
+                        <%= element.instance_CH4_H2 %>
+                     </small>
+                 </span>
+
+                 <span 
+                 
+                 class=" bg-blue-300 border-2 border-solid
+                 p-2
+                  border-orange-200" > 
+                  <small>
+                    C2H2/CH4
+                  </small> <br>
+                   <small>
+                      <%= element.instance_C2H2_CH4 %>
+                   </small>
+               </span>
+
+               <span
+               class=" bg-blue-300 border-2 border-solid
+                 p-2
+                  border-orange-200" 
+               > 
+                  <small>
+                    C2H2/C2H4
+                  </small> <br>
+                   <small>
+                      <%= element.instance_C2H2_C2H4 %>
+                   </small>
+               </span>
+
+
+               <span
+               class=" bg-blue-300 border-2 border-solid
+               p-2
+                border-orange-200" 
+               > 
+                  <small>
+                    C2H6/C2H2
+                  </small> <br>
+                   <small>
+                      <%= element.instance_C2H6_C2H2 %>
+                   </small>
+               </span>
+                 
+                 </div>
+         <% }) %>
+     <% } %>
+       </div>
+   <!--  the for the iEC -->
+
+   <div  class="the_broad_view  col-span-1 border-2 border-solid
+   w-auto
+   p-4
+   iec
+   absolute
+   hidden
+   rounded-lg
+   m-14
+   flex-wrap h-auto
+  border-indigo-200" >
+
+   
+   
+   
+   
+
+  <% if (typeof one_iec !== null&&typeof one_iec !== 'undefined') { %>
+    <!--  then we are going to be outputing them one after the other -->
+   
+      <span class="heder_for_them text-3xl text-pink-400 font-sans  ">
+         I.E.C
+      </span>
+     
+     <% one_iec.forEach((element,index) => { %>
+        <div   class=" cursor-pointer 
+           mb-3 bg-fuchsia-400 w-fit  p-3 rounded-lg m-auto ">
+          <span class=" flex flex-col space-y-1 wrapper_all3" id="main_<%=index%>"> 
+              
+           <span> Row <%= index+1 %></span>
+            <%= element.faul_type%> <br>
+              <% if (element.according_to_den.length !== 0) { %>
+                <br>
+                <small class="bg-green-400 p-3 rounded-md">
+                   <%= element.according_to_den %>
+                </small>
+                 <br>
+              <% }else{ %>
+               <small class="bg-red-400 p-3 rounded-md">
+                   <%="Not good" %> 
+               </small>
+               <% } %>
+          </span>
+                
+        </div>
+         <!-- here is when we do want to dispaly the inner 
+        value of the ratios and other 
+         -->
+         <div id="iec<%=index%>" class=" hidden raw_value_ration 
+           bg-indigo-400 p-5 rounded-lg  h-fit
+            items-center w-fit text-white z-40
+             fixed top-1/2 left-1/2 transform -translate-x-1/2
+           -translate-y-1/2">
+           
+            
+           <span  
+            class=" bg-blue-300 border-2 border-solid
+            p-2
+             border-orange-200" 
+           > 
+               <small>
+                 CH4/H2
+               </small> <br>
+                <small>
+                   <%= element.instance_CH4_H2 %>
+                </small>
+            </span>
+
+            <span 
+            
+            class=" bg-blue-300 border-2 border-solid
+            p-2
+             border-orange-200" > 
+             <small>
+               C2H2/C2H4
+             </small> <br>
+              <small>
+                 <%= element.instance_C2H2_C2H4 %>
+              </small>
+          </span>
+
+        
+
+          <span
+          class=" bg-blue-300 border-2 border-solid
+          p-2
+           border-orange-200" 
+          > 
+             <small>
+               C2H4/C2H6
+             </small> <br>
+              <small>
+                 <%= element.instance_C2H4_C2H6 %>
+              </small>
+          </span>
+            
+            </div>
+    <% }) %>
+<% } %>
+  </div>
+
+
+</div>
+
+</div>
+
+ <script>
+    let wrapper_all = document.querySelectorAll(".wrapper_all2");
+     wrapper_all.forEach(element=>{
+       element.addEventListener("click",(event)=>{
+         //   getting the id
+          let id_now  = event.target.id.split("_")[1];
+          let id_now_two  = event.target.id.split("_")[0];
+    let show_this =  document.getElementById(id_now);
+              show_this.classList.toggle("hidden"); 
+               overlay1.classList.toggle("hidden")
+                show_this.classList.add("flex")          
+       })
+     })
+
+
+     let wrapper_all3 = document.querySelectorAll(".wrapper_all3");
+     wrapper_all3.forEach(element=>{
+       element.addEventListener("click",(event)=>{
+         //   getting the id
+          let id_now  = event.target.id.split("_")[1];
+          let id_now_two  = event.target.id.split("_")[0];
+    let show_this =  document.getElementById(`iec${id_now}`);
+              show_this.classList.toggle("hidden"); 
+               overlay1.classList.toggle("hidden")
+                show_this.classList.add("flex")          
+       })
+     })
+
+     
+     let do_en = document.querySelector(".do_en");
+     let iec = document.querySelector(".iec");
+      
+      //  here is the making of the sShow_this_One function 
+       function Show_this_One(content){
+          if(content === "IEC_IEEE"){
+                 //   do not shoe others
+                  if(!do_en.classList.contains("hidden")){
+                      do_en.classList.add("hidden")
+                  }
+                  //   show the current one
+                    iec.classList.remove("hidden");
+                    iec.classList.add("flex");
+           } if(content ==="Doenngurd"){
+        //   do not shoe others
+        if(!iec.classList.contains("hidden")){
+                      iec.classList.add("hidden")
+                  }
+
+                  //  showing of the other
+                   do_en.classList.remove("hidden");
+                   do_en.classList.add("flex");
+     }
+     
+          }
+
+
+      
+      // for the one to be currently there   
+       let all_them = document.querySelectorAll(".current_tool");
+         all_them.forEach(element=>{
+          element.addEventListener("click",()=>{
+            //   here checking the content
+              let content =  event.target.innerText; 
+            //  here is the special function for the covering of sall the 
+            //   othere lemenet and making the right one to be appeating 
+             Show_this_One(content);
+          })
+         })
+
+          
+
+ </script>

@@ -1,0 +1,59 @@
+
+    <div class="wrapper">
+       
+  <div class="w-fit text-center m-auto 
+  border-b-3 border-b-sky-400 border-solid
+  mb-3
+  p-4
+ 
+   rounded-lg
+ text-black  text-3xl">
+      Excel_File_Uploading
+ </div>
+<div class="warrper_upload_zone flex flex-col space-y-3 items-center justify-center">
+   
+     <div class="paraent_for_the_previewing m-4 relative">
+                
+     </div> 
+
+      <form action="/real_deal/upload_file" method="post" enctype="multipart/form-data">
+  
+         <input type="file" name="excel_file" class="hidden" id="excel_file">
+       
+         
+          
+          
+    <div class="warpper text-center">
+       
+         <label for="excel_file" class="border-2 m-auto w- p-3  border-solid rounded-lg 
+         border-gray-500 "> Click Here to Upload</label>
+      </div>
+
+
+
+        
+ <div class="w-fit text-center m-auto 
+ border-b-3 border-b-sky-400 border-solid
+  bg-green-400
+ mt-6
+ p-4
+  rounded-lg
+text-black  text-3xl">
+<button type="submit" class="">
+   Send_File_Btn
+</button>
+</div>
+         </form>
+</div>
+    </div>
+
+     <script>
+
+          // here we are going to be using the fnction for
+          //   the realtime previewing of the uifle 
+           
+           let input_tag_thing = document.getElementById("excel_file"); 
+          //  here is the place for the previewing of the thing 
+           let previewing_place =  document.querySelector(".paraent_for_the_previewing"); 
+           preview_this(previewing_place,input_tag_thing);
+     </script>

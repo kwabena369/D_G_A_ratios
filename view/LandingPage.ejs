@@ -1,0 +1,30 @@
+
+ <% if (typeof all_case !== null&&typeof all_case !== 'undefined') { %>
+   
+     <!--  then we are going to be outputing them one after the other -->
+      
+     <% all_case.forEach((element,index) => { %>
+      
+         <div class="wrapper_all mb-3 bg-fuchsia-400 w-fit  p-3 rounded-lg m-auto ">
+             <span> Row <%= index+1 %></span>
+             <%= element.faul_type%> <br>
+               <% if (element.according_to_den.length !== 0) { %>
+                 <br>
+                 <small class="bg-green-400 p-3 rounded-md">
+                    <%= element.according_to_den %>
+                 </small>
+                  <br>
+               <% }else{ %>
+                <small class="bg-red-400 p-3 rounded-md">
+                    <%="Not good" %> 
+                </small>
+                <% } %>
+         </div>
+     <% }) %>
+ <% } %>
+
+ <script>
+
+     let  done_here = '<%=all_case%>'
+      console.log(done_here)
+ </script>
